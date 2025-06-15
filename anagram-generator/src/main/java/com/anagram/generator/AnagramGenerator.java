@@ -1,17 +1,21 @@
-package com;
+package com.anagram.generator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnagramGenerator {
+    //validating input
 
-    public static List<String> generateAnagrams(char[] input) {
+    public static void validateInput(char[] input) {
         if (input == null || input.length == 0)
             throw new IllegalArgumentException("Input must be non-empty.");
 
         if (!new String(input).matches("[a-zA-Z]+"))
             throw new IllegalArgumentException("Input must contain only alphabetic characters.");
 
+    }
+
+    public static List<String> generateAnagrams(char[] input) {
         List<String> result = new ArrayList<>();
 
         generate(input, 0, result);
@@ -19,13 +23,15 @@ public class AnagramGenerator {
         return result;
     }
 
+    //recursive method to swap letter in order to create anagrams and return the generated anagrams quantity
     private static void generate(char[] chars, int index, List<String> result) {
-        //save original order
+        //checking ifa new anagram is completed
         if (index == chars.length - 1) {
             result.add(new String(chars));
             return;
         }
 
+        //swapping letters until complete all anagrams with a letter in one fixed  position
         for (int i = index; i < chars.length; i++) {
             swap(chars, index, i);
             generate(chars, index + 1, result);
@@ -33,7 +39,7 @@ public class AnagramGenerator {
         }
     }
 
-    //
+    //swapping letters order
     private static void swap(char[] arr, int i, int j) {
         if (i != j) {
             char temp = arr[i];
@@ -43,9 +49,10 @@ public class AnagramGenerator {
     }
 
     public static void main(String[] args) {
-        char [] input = {'a','b','c'};
+        char [] input = {'a','b','c','d','e','f'};
 
         long start = System.nanoTime();
+        validateInput(input);
         List<String> result = generateAnagrams(input);
         result.forEach(System.out::println);
         long end = System.nanoTime();

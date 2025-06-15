@@ -11,4 +11,19 @@ Additional Requirements:
 - Document your code clearly, explaining the logic for generating anagrams.
 
 # Solution
+```
+📦src
+┣ 📂main
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂anagram
+┃ ┃ ┃ ┃ ┗ 📂generator
+┃ ┃ ┃ ┃ ┃ ┗ 📜AnagramGenerator.java
+┗ 📂test
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂anagram
+┃ ┃ ┃ ┃ ┗ 📂generator
+┃ ┃ ┃ ┃ ┃ ┗ 📜AnagramGeneratorTest.java
+```
 

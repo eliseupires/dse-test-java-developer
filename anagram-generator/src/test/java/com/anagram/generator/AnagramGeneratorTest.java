@@ -1,4 +1,4 @@
-package com;
+package com.anagram.generator;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +33,7 @@ class AnagramGeneratorTest {
     void testEmptyInput() {
         char[] input = {};
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            AnagramGenerator.generateAnagrams(input);
+            AnagramGenerator.validateInput(input);
         });
         assertEquals("Input must be non-empty.", exception.getMessage());
     }
@@ -42,7 +42,7 @@ class AnagramGeneratorTest {
     void testNonAlphabeticInput() {
         char[] input = {'p','0','r','t'};
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            AnagramGenerator.generateAnagrams(input);
+            AnagramGenerator.validateInput(input);
         });
         assertEquals("Input must contain only alphabetic characters.", exception.getMessage());
     }

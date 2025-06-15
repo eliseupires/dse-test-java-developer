@@ -1,19 +1,23 @@
-package com.example.user.service;
+package com.user.registration.service;
 
-import com.example.user.model.User;
-import com.example.user.repository.UserRepository;
+import com.user.registration.dto.UserDTO;
+import com.user.registration.mapper.UserMapper;
+import com.user.registration.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.regex.Pattern;
-
+@Service
 public class UserService {
-    private final UserRepository repository;
+    @Autowired
+    private UserMapper userMapper;
 
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private  UserRepository repository;
 
-    public void registerUser(User user) {
-        if (user.getName() == null || user.getEmail() == null)
-            throw new IllegalArgumentException("Name and email are required");
+    public UserDTO create(UserDTO user) {
+       if (user.getName() == null || user.getEmail() == null)
+          throw new IllegalArgumentException("Name and email are required");
 
         if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", user.getEmail()))
             throw new IllegalArgumentException("Invalid email format");
@@ -22,13 +26,12 @@ public class UserService {
             throw new IllegalStateException("Email already in use");
         });
 
-        repository.save(user);
+        return userMapper.toDto(repository.save(userMapper.toEntity((user))));
     }
 
-    public void deleteUser(Long id, boolean isAdmin) {
-        if (!isAdmin) {
-            throw new SecurityException("Only admin users can delete");
-        }
+    public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    //public UserDTO update()
 }

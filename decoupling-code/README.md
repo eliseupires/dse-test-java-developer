@@ -26,4 +26,27 @@ This pattern allows you to define your own interface that your application code 
 
 
 ### Example
-Imagine your app sends emails using a third-party service (e.g., Company Email), but you want to keep the option open to switch to another service (like Personal Email).
+Imagine your app sends emails using a third-party service, but you want to keep the option open to switch to another service (like Personal Email).
+```
+📦src
+┣ 📂main
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂decoupling
+┃ ┃ ┃ ┃ ┗ 📂code
+┃ ┃ ┃ ┃ ┃ ┣ 📂adapter
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SendCompanyEmailAdapter.java
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SendCompanyEmailClient.java
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SendPersonalEmailAdapter.java
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SendPersonalEmailClient.java
+┃ ┃ ┃ ┃ ┃ ┣ 📂service
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailNotifier.java
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜IEmailService.java
+┃ ┃ ┃ ┃ ┃ ┗ 📜DecouplingCode.java
+┗ 📂test
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂decoupling
+┃ ┃ ┃ ┃ ┗ 📂code
+┃ ┃ ┃ ┃ ┃ ┗ 📜EmailNotifierTest.java
+```

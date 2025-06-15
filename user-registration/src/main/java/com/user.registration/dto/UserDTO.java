@@ -1,30 +1,18 @@
-package com.user.registration.model;
+package com.user.registration.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(generator = "sequence_id")
+public class UserDTO {
     private Long id;
-    @Column
+    @NotNull
+    @NotBlank
     private String name;
-    @Column
+    @NotNull
+    @NotBlank
     private String email;
-    @Column
     private String address;
-    @Column
     private String phone;
-
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public User(){
-
-    }
 
     public Long getId() {
         return id;
@@ -34,20 +22,20 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAddress() {

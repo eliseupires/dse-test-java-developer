@@ -16,3 +16,12 @@ Consider the following description of a system functionality:
 
 ### Solution
 
+Testing User Registration in Java
+
+|Test Type|            Purpose       | Tools                                 |
+|-------------|----------------------|---------------------------------------|
+| Unit Test    |Validate logic in isolation| JUnit 5, Mockito, AssertJ             |
+| Integration Test |Validate database/API interaction	|   Spring Boot Test, Testcontainers|                                    | 
+
+
+

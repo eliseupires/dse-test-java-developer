@@ -24,4 +24,22 @@ This is critical when objects are stored in hash-based collections like HashSet 
 | Symmetry    | a.equals(b) must return the same result as b.equals(a)                                                |
 | Consistency | a.equals(b) should consistently return the same result unless the properties used in equality change. | 
 
+### Example
+```
+📦src
+┣ 📂main
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂overriding
+┃ ┃ ┃ ┃ ┗ 📂equals
+┃ ┃ ┃ ┃ ┃ ┣ 📂model
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Person.java
+┃ ┃ ┃ ┃ ┃ ┗ 📜OverridingEqualsMethod.java
+┗ 📂test
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂overriding
+┃ ┃ ┃ ┃ ┗ 📂equals
+┃ ┃ ┃ ┃ ┃ ┗ 📜OverridingEqualsMethodTest.java
 
+```

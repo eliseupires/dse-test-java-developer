@@ -1,36 +1,54 @@
-package com.example.user.service;
+package com.user.registration.service;
 
-import com.example.user.model.User;
-import com.example.user.repository.UserRepository;
+import com.user.registration.dto.UserDTO;
+import com.user.registration.mapper.UserMapper;
+import com.user.registration.model.User;
+import com.user.registration.repository.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
-    private final UserRepository repo = Mockito.mock(UserRepository.class);
-    private final UserService service = new UserService(repo);
+    @Mock
+    private UserRepository repository;
+    @Mock
+    private UserMapper userMapper;
+    @InjectMocks
+    private UserService service ;
 
     @Test
     void shouldRejectDuplicateEmail() {
-        Mockito.when(repo.findByEmail("test@example.com"))
+        Mockito.when(repository.findByEmail("test@example.com"))
                .thenReturn(Optional.of(new User()));
 
-        User user = new User();
+        UserDTO user = new UserDTO();
         user.setName("Test");
         user.setEmail("test@example.com");
 
-        assertThrows(IllegalStateException.class, () -> service.registerUser(user));
+        assertThrows(IllegalStateException.class, () -> service.create(user));
     }
 
     @Test
     void shouldRejectInvalidEmail() {
-        User user = new User();
+        UserDTO user = new UserDTO();
         user.setName("Test");
         user.setEmail("invalid");
 
-        assertThrows(IllegalArgumentException.class, () -> service.registerUser(user));
+        assertThrows(IllegalArgumentException.class, () -> service.create(user));
+    }
+
+    @Test
+    void shouldRejectEmptyName() {
+        UserDTO user = new UserDTO();
+        user.setEmail("test@example.com");
+
+        assertThrows(IllegalArgumentException.class, () -> service.create(user));
     }
 }
