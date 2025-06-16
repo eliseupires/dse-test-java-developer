@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="name" placeholder="Name" required />
+  <input formControlName="email" placeholder="Email" required />
+  <input formControlName="address" placeholder="Address" />
+  <input formControlName="phone" placeholder="Phone" />
+  <button type="submit">{{ form.value.id ? 'Update' : 'Add' }} User</button>
+</form>

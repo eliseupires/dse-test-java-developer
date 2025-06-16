@@ -1,0 +1,8 @@
+<app-user-form [user]="selectedUser" (submitUser)="onSubmit($event)"></app-user-form>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }} - {{ user.email }}
+    <button (click)="onEdit(user)">Edit</button>
+    <button (click)="onDelete(user.id)">Delete</button>
+  </li>
+</ul>

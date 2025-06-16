@@ -23,5 +23,37 @@ Testing User Registration in Java
 | Unit Test    |Validate logic in isolation| JUnit 5, Mockito, AssertJ             |
 | Integration Test |Validate database/API interaction	|   Spring Boot Test, Testcontainers|                                    | 
 
+```
+📦src
+┣ 📂main
+┃ ┣ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂user.registration
+┃ ┃ ┃ ┃ ┣ 📂controller
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java
+┃ ┃ ┃ ┃ ┣ 📂dto
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserDTO.java
+┃ ┃ ┃ ┃ ┣ 📂mapper
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserMapper.java
+┃ ┃ ┃ ┃ ┣ 📂model
+┃ ┃ ┃ ┃ ┃ ┗ 📜User.java
+┃ ┃ ┃ ┃ ┣ 📂repository
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserRepository.java
+┃ ┃ ┃ ┃ ┣ 📂security
+┃ ┃ ┃ ┃ ┃ ┗ 📜SecurityConfig.java
+┃ ┃ ┃ ┃ ┣ 📂service
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java
+┃ ┃ ┃ ┃ ┗ 📜UserRegistration.java
+┃ ┗ 📂resources
+┃ ┃ ┗ 📜application.properties
+┗ 📂test
+┃ ┗ 📂java
+┃ ┃ ┗ 📂com
+┃ ┃ ┃ ┗ 📂user.registration
+┃ ┃ ┃ ┃ ┣ 📂controller
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserControllerIntegrationTest.java
+┃ ┃ ┃ ┃ ┗ 📂service
+┃ ┃ ┃ ┃ ┃ ┗ 📜UserServiceTest.java
+```
 
 
